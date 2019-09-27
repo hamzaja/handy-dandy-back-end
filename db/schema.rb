@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2019_09_26_213157) do
   end
 
   create_table "user_skills", force: :cascade do |t|
-    t.string "experiance"
+    t.string "experience"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
