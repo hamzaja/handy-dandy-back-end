@@ -31,8 +31,12 @@ ActiveRecord::Schema.define(version: 2019_09_26_213157) do
 
   create_table "user_skills", force: :cascade do |t|
     t.string "experience"
+    t.bigint "user_id"
+    t.bigint "skill_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["skill_id"], name: "index_user_skills_on_skill_id"
+    t.index ["user_id"], name: "index_user_skills_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
