@@ -1,13 +1,13 @@
 class AuthController < ApplicationController
   def login
     user = User.find_by(username: params[:username])
-    is_autheticated = user.authenticate(params[:password])
+    is_authenticated = user.authenticate(params[:password])
 
-    if is_autheticated
-      render json: {token: create_token(user.id)} #i want a token insted
+    if is_authenticated
+
+      render json: { token: encode_token(user_payload(user)) }
     else
-      render json: { errors: ["Wrong username/password"] }, status: :unprocessable_entity
+      render json: { error: "Wrong username and/or password. Sorry!" }
     end
   end
-
 end
