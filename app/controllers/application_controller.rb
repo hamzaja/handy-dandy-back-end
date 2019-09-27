@@ -1,25 +1,36 @@
 class ApplicationController < ActionController::API
 
+  def encode_token(payload)
+    JWT.encode payload, secret, 'HS256'
+  end
+
+  def user_payload(user)
+    { user_id: user.id }
+  end
+
+  def secret
+      ENV['handy_app_secret']
+  end
+
   def token
     request.headers["Authorization"]
   end
 
-  def secret
-    ENV['handy_app_secret']
-    # Rails.application.credentials.jwt_secret
-  end
-
   def decoded_token
-    JWT.decode(token, secret, true, { algorithm: 'HS256' })
+    JWT.decode token, secret, true, { algorithm: 'HS256'}
   end
 
   def current_user
-    User.find(decoded_token[0]["user_id"])
+    user_id = decoded_token[0]["user_id"]
+    User.find(user_id)
   end
 
-  def create_token(user_id)
-    payload = { user_id: user_id }
-    JWT.encode(payload, secret, 'HS256')
+  def logged_in?
+    !!current_user
+  end
+
+  def authorized
+    render json: { message: "You are not login, please log in" }, status: :unauthorized unless logged_in?
   end
 
 end
