@@ -1,3 +1,3 @@
 class UserSkillSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :user_id, :skill_id, :experience
 end

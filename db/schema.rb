@@ -18,8 +18,12 @@ ActiveRecord::Schema.define(version: 2019_09_26_213157) do
   create_table "bookings", force: :cascade do |t|
     t.string "time"
     t.string "date"
+    t.bigint "this_user_id"
+    t.bigint "other_user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["other_user_id"], name: "index_bookings_on_other_user_id"
+    t.index ["this_user_id"], name: "index_bookings_on_this_user_id"
   end
 
   create_table "skills", force: :cascade do |t|
