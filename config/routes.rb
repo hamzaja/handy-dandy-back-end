@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :user_messages
+  resources :messages
   resources :connections
   resources :bookings
   resources :skills

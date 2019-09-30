@@ -3,6 +3,9 @@ class User < ApplicationRecord
   has_many :user_skills
   has_many :skills, through: :user_skills
 
+  has_many :user_messages
+  has_many :messages, through: :user_messages
+
 # for booking
   has_many :booked_users, foreign_key: :this_user_id, class_name: 'Booking'
   has_many :other_users, through: :booked_users
