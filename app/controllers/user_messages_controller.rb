@@ -4,8 +4,9 @@ class UserMessagesController < ApplicationController
     render json: @messages
   end
 
-def show
-    @message = UserMessage.find(params[:id])
+  def show
+
+    @message = UserMessage.all.where(message_id:(params[:id]))
     render json: @message
   end
 
@@ -19,5 +20,5 @@ private
   def user_messages_params
     params.permit(:text, :user_id, :message_id)
   end
-  
+
 end

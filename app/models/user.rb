@@ -20,4 +20,6 @@ class User < ApplicationRecord
   has_many :following_users, foreign_key: :followee_id, class_name: 'Connection'
   has_many :followers, through: :following_users
 
+  validates :first_name, :last_name, :username , presence: true
+  validates :first_name, :last_name, :username, :email, uniqueness: true ,on: :create
 end
