@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2019_09_30_215940) do
 
   create_table "user_skills", force: :cascade do |t|
     t.string "experience"
+    t.string "hourly_price"
     t.bigint "user_id"
     t.bigint "skill_id"
     t.datetime "created_at", precision: 6, null: false

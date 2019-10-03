@@ -17,7 +17,7 @@ class UserSkillsController < ApplicationController
 private
 
   def user_skillparams
-    params.permit(:user_id, :skill_id, :experience)
+    params.permit(:user_id, :skill_id, :experience, :hourly_price)
   end
 
 end
