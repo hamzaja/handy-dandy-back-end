@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if user.valid?
       render json: { token: encode_token(user_payload(user)) }
     else
-      render json: {errors: user.errors.fullmessages}, status: :unprocessable_entity
+      render json: {errors: user.errors.messages}, status: :unprocessable_entity
     end
 
   end
@@ -25,6 +25,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     render json: @user
   end
+
 
   private
 

@@ -5,10 +5,13 @@ class UserSkillsController < ApplicationController
   end
 
   def create
+    @userskill = UserSkill.create(user_skillparams)
+    render json: @userskill
+  end
 
-    @user = UserSkill.create(user_skillparams)
-    render json: @user
-    
+  def show
+    @userskill = UserSkill.all.where(skill_id:(params[:id]))
+    render json: @userskill
   end
 
 private
