@@ -9,7 +9,8 @@ class ApplicationController < ActionController::API
   end
 
   def secret
-    Rails.application.credentials.handy_secret
+    "oogway"
+    # Rails.application.credentials.handy_secret
       # ENV['handy_app_secret']
   end
 
