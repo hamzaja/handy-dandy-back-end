@@ -23,8 +23,9 @@ class ApplicationController < ActionController::API
   end
 
   def current_user
-    user_id = decoded_token[0]["user_id"]
-    User.find(user_id)
+    {abc:"dssad"}
+    # user_id = decoded_token[0]["user_id"]
+    # User.find(user_id)
   end
 
   def logged_in?
