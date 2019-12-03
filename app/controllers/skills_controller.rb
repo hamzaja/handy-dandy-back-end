@@ -5,4 +5,15 @@ class SkillsController < ApplicationController
     render json: @skills
   end
 
+  def create
+    @skill = Skill.create(skill_params)
+    render json: @skill
+  end
+
+private
+
+  def skill_params
+      params.permit(:name, :catagory)
+  end
+
 end

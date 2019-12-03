@@ -9,7 +9,9 @@ class ApplicationController < ActionController::API
   end
 
   def secret
-      ENV['handy_app_secret']
+    "oogway"
+    # Rails.application.credentials.handy_secret
+      # ENV['handy_app_secret']
   end
 
   def token
@@ -21,6 +23,7 @@ class ApplicationController < ActionController::API
   end
 
   def current_user
+    # {abc:"dssad"}
     user_id = decoded_token[0]["user_id"]
     User.find(user_id)
   end
